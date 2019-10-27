@@ -1,22 +1,22 @@
 Grant Verheul
 12001640
-Task 2 Prog3b
-//Grant Verheul 12001640
+Prog3B7312 - IIE VC
+
 //Task 1
 //Dynamically loads a .NET assembly
-//Displays an aplphabetical list of all the external references that the assembly specifies.
+//Displays an alphabetical list of all the external references that the assembly specifies.
 //Displays a list of all the classes in the assembly, ordered by number of methods in the class
-//Displays a list of all the classes in the assembly, ordred by average number of lines per method - changed to byte size
+//Displays a list of all the classes in the assembly, ordered by average number of lines per method - changed to byte size
 //Visually distinguishes all the classes that have an average number of lines per method higher than a user configurable number as non-compliant to company standards
 //Task 2
-//Display all the interfaces in the assemby in aplabetical order.
+//Display all the interfaces in the assembly in alphabetical order.
 //Visually distinguishes any interfaces with no implementations as non-compliant to company standards.
 //Visually distinguishes any interfaces with names that do not match a user configurable regular expression as non-compliant to company standards.
 //Display all the classes that implement a user selected interface.
 //Task 3
-//Uses a tree data structure to represent the inheritance hierachy of each of the classes in the assembly.
+//Uses a tree data structure to represent the inheritance hierarchy of each of the classes in the assembly.
 //Display the inheritance hierarchy of any selected class to the user.
-//Uses recursion to export a text file that shows the classes and hierachy of each one.
+//Uses recursion to export a text file that shows the classes and hierarchy of each one.
 //Uses a graph data structure to represent the association and composition relationships between classes.
 //Displays the relationships of any selected class to the user.
 //Visually distinguishes any class with more than a user configurable number of relationships as non-complaint with company standards.
@@ -38,15 +38,270 @@ regex to handle search functionality and user defined expression.
 tree object to handle class and inheritance nodes and relations. 
 direct graph data structure to handle class hierarchy.
 tree data structure to handle class hierarchy. 
+tree view to display tree data structure.
+rich text box to display graph data structure.
+list nodes, list edges for direct graph data structure.
+stream reader to read from a text file.
+stream writer to write to a text file.
 
 Open folder called Prog3BTask1 and open Prog3bTask1.sln to Open the program in Visual Studio and press the F6 key (build and run).
 
-Press the Select Assembly File > Navigate to the dll file (dll test folder > TestingDllv2 > TestingDllv2 > bin > debug> ClassLibrary2AssemblyTesting) you want to run and press Open  
+Press the Select Assembly File > Navigate to the dll file (dll test folder > TTestAssembly.exe)that you would like to run and press Open  
 in the text box (middle right) replace the text with how many lines (byte) you don't want displayed and press the Search button.
-bottom left text box, replace the text with an interface name or regular expression for highlighting interfaces that do not match text field.
-The far right text box, enter the class you wish to highlight the hierarchy of that class. Press the search button to highlight the user defined class.
+bottom middle text box, replace the text with an interface name or regular expression for highlighting interfaces that do not match text field.
+The far top right text box, enter the class you wish to highlight the hierarchy of that class. Press the search button to highlight the user defined class.
+The middle right text box, enter the number of relationships of a class that should be less than for company standards.
 
 Used various test assembly files - see test folder 
+dll AssemblyTesting was used to demonstrate the capabilities of the program.
+Tree Data Structure:
+Class_2
+ClassMain
+ClassOut
+---ClassIN
+ClassOut2
+---ClassIn2
+NewClass
+Program
+Resources
+
+Graph Data Structure:
+Nodes:
+ClassIN
+ClassIn2
+ClassMain
+ClassOut
+ClassOut2
+Form1
+Form2
+Form3
+Form4
+NewClass
+
+Edges:
+ClassOut -> ClassIN
+ClassOut2 -> ClassIn2
+
+External Refrence: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+External Refrence: System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+External Refrence: System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+External Refrence: System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+File Name: TestAssembly, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Has interface: Class: Class_2 Interface Name: InterfaceBBB is compliant
+Has interface: Class: Class_2 Interface Name: interface1 is compliant
+Class Name: Class_2 Method Name: get_Color Method Size: 7
+Class Name: Class_2 Method Name: set_Color Method Size: 8
+Class Name: Class_2 Method Name: Close Method Size: 30
+Class Name: Class_2 Method Name: Open Method Size: 30
+Class Name: Class_2 Method Name: Write Method Size: 29
+File Name: TestAssembly, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Class Name: ClassIN Method Name: display Method Size: 16
+File Name: TestAssembly, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Class Name: ClassIn2 Method Name: display Method Size: 16
+File Name: TestAssembly, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+File Name: TestAssembly, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Class Name: ClassOut Method Name: Cin Method Size: 7
+File Name: TestAssembly, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Class Name: ClassOut2 Method Name: Cin2 Method Size: 7
+File Name: TestAssembly, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Has interface: Class: Form1 Interface Name: IComponent is compliant
+Has interface: Class: Form1 Interface Name: IDisposable is compliant
+Has no interface: Class: Form1 Interface Name: IOleControl is non-compliant
+Has no interface: Class: Form1 Interface Name: IOleObject is non-compliant
+Has no interface: Class: Form1 Interface Name: IOleInPlaceObject is non-compliant
+Has no interface: Class: Form1 Interface Name: IOleInPlaceActiveObject is non-compliant
+Has no interface: Class: Form1 Interface Name: IOleWindow is non-compliant
+Has no interface: Class: Form1 Interface Name: IViewObject is non-compliant
+Has no interface: Class: Form1 Interface Name: IViewObject2 is non-compliant
+Has no interface: Class: Form1 Interface Name: IPersist is non-compliant
+Has no interface: Class: Form1 Interface Name: IPersistStreamInit is non-compliant
+Has no interface: Class: Form1 Interface Name: IPersistPropertyBag is non-compliant
+Has no interface: Class: Form1 Interface Name: IPersistStorage is non-compliant
+Has no interface: Class: Form1 Interface Name: IQuickActivate is non-compliant
+Has interface: Class: Form1 Interface Name: ISupportOleDropSource is compliant
+Has interface: Class: Form1 Interface Name: IDropTarget is compliant
+Has interface: Class: Form1 Interface Name: ISynchronizeInvoke is compliant
+Has interface: Class: Form1 Interface Name: IWin32Window is compliant
+Has interface: Class: Form1 Interface Name: IArrangedElement is compliant
+Has interface: Class: Form1 Interface Name: IBindableComponent is compliant
+Has interface: Class: Form1 Interface Name: IKeyboardToolTip is compliant
+Has interface: Class: Form1 Interface Name: IContainerControl is compliant
+Class Name: Form1 Method Name: btnCnt10_Click Method Size: 41
+Class Name: Form1 Method Name: btnCnt20_Click Method Size: 15
+Class Name: Form1 Method Name: btnCnt30_Click Method Size: 15
+Class Name: Form1 Method Name: Dispose Method Size: 43
+Class Name: Form1 Method Name: InitializeComponent Method Size: 582
+File Name: TestAssembly, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Has interface: Class: Form2 Interface Name: IComponent is compliant
+Has interface: Class: Form2 Interface Name: IDisposable is compliant
+Has no interface: Class: Form2 Interface Name: IOleControl is non-compliant
+Has no interface: Class: Form2 Interface Name: IOleObject is non-compliant
+Has no interface: Class: Form2 Interface Name: IOleInPlaceObject is non-compliant
+Has no interface: Class: Form2 Interface Name: IOleInPlaceActiveObject is non-compliant
+Has no interface: Class: Form2 Interface Name: IOleWindow is non-compliant
+Has no interface: Class: Form2 Interface Name: IViewObject is non-compliant
+Has no interface: Class: Form2 Interface Name: IViewObject2 is non-compliant
+Has no interface: Class: Form2 Interface Name: IPersist is non-compliant
+Has no interface: Class: Form2 Interface Name: IPersistStreamInit is non-compliant
+Has no interface: Class: Form2 Interface Name: IPersistPropertyBag is non-compliant
+Has no interface: Class: Form2 Interface Name: IPersistStorage is non-compliant
+Has no interface: Class: Form2 Interface Name: IQuickActivate is non-compliant
+Has interface: Class: Form2 Interface Name: ISupportOleDropSource is compliant
+Has interface: Class: Form2 Interface Name: IDropTarget is compliant
+Has interface: Class: Form2 Interface Name: ISynchronizeInvoke is compliant
+Has interface: Class: Form2 Interface Name: IWin32Window is compliant
+Has interface: Class: Form2 Interface Name: IArrangedElement is compliant
+Has interface: Class: Form2 Interface Name: IBindableComponent is compliant
+Has interface: Class: Form2 Interface Name: IKeyboardToolTip is compliant
+Has interface: Class: Form2 Interface Name: IContainerControl is compliant
+Class Name: Form2 Method Name: method1 Method Size: 19
+Class Name: Form2 Method Name: method2 Method Size: 19
+Class Name: Form2 Method Name: Dispose Method Size: 43
+Class Name: Form2 Method Name: InitializeComponent Method Size: 434
+File Name: TestAssembly, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Has interface: Class: Form3 Interface Name: IComponent is compliant
+Has interface: Class: Form3 Interface Name: IDisposable is compliant
+Has no interface: Class: Form3 Interface Name: IOleControl is non-compliant
+Has no interface: Class: Form3 Interface Name: IOleObject is non-compliant
+Has no interface: Class: Form3 Interface Name: IOleInPlaceObject is non-compliant
+Has no interface: Class: Form3 Interface Name: IOleInPlaceActiveObject is non-compliant
+Has no interface: Class: Form3 Interface Name: IOleWindow is non-compliant
+Has no interface: Class: Form3 Interface Name: IViewObject is non-compliant
+Has no interface: Class: Form3 Interface Name: IViewObject2 is non-compliant
+Has no interface: Class: Form3 Interface Name: IPersist is non-compliant
+Has no interface: Class: Form3 Interface Name: IPersistStreamInit is non-compliant
+Has no interface: Class: Form3 Interface Name: IPersistPropertyBag is non-compliant
+Has no interface: Class: Form3 Interface Name: IPersistStorage is non-compliant
+Has no interface: Class: Form3 Interface Name: IQuickActivate is non-compliant
+Has interface: Class: Form3 Interface Name: ISupportOleDropSource is compliant
+Has interface: Class: Form3 Interface Name: IDropTarget is compliant
+Has interface: Class: Form3 Interface Name: ISynchronizeInvoke is compliant
+Has interface: Class: Form3 Interface Name: IWin32Window is compliant
+Has interface: Class: Form3 Interface Name: IArrangedElement is compliant
+Has interface: Class: Form3 Interface Name: IBindableComponent is compliant
+Has interface: Class: Form3 Interface Name: IKeyboardToolTip is compliant
+Has interface: Class: Form3 Interface Name: IContainerControl is compliant
+Class Name: Form3 Method Name: method1 Method Size: 19
+Class Name: Form3 Method Name: method2 Method Size: 19
+Class Name: Form3 Method Name: method3 Method Size: 19
+Class Name: Form3 Method Name: Dispose Method Size: 43
+Class Name: Form3 Method Name: InitializeComponent Method Size: 598
+File Name: TestAssembly, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Has interface: Class: Form4 Interface Name: IComponent is compliant
+Has interface: Class: Form4 Interface Name: IDisposable is compliant
+Has no interface: Class: Form4 Interface Name: IOleControl is non-compliant
+Has no interface: Class: Form4 Interface Name: IOleObject is non-compliant
+Has no interface: Class: Form4 Interface Name: IOleInPlaceObject is non-compliant
+Has no interface: Class: Form4 Interface Name: IOleInPlaceActiveObject is non-compliant
+Has no interface: Class: Form4 Interface Name: IOleWindow is non-compliant
+Has no interface: Class: Form4 Interface Name: IViewObject is non-compliant
+Has no interface: Class: Form4 Interface Name: IViewObject2 is non-compliant
+Has no interface: Class: Form4 Interface Name: IPersist is non-compliant
+Has no interface: Class: Form4 Interface Name: IPersistStreamInit is non-compliant
+Has no interface: Class: Form4 Interface Name: IPersistPropertyBag is non-compliant
+Has no interface: Class: Form4 Interface Name: IPersistStorage is non-compliant
+Has no interface: Class: Form4 Interface Name: IQuickActivate is non-compliant
+Has interface: Class: Form4 Interface Name: ISupportOleDropSource is compliant
+Has interface: Class: Form4 Interface Name: IDropTarget is compliant
+Has interface: Class: Form4 Interface Name: ISynchronizeInvoke is compliant
+Has interface: Class: Form4 Interface Name: IWin32Window is compliant
+Has interface: Class: Form4 Interface Name: IArrangedElement is compliant
+Has interface: Class: Form4 Interface Name: IBindableComponent is compliant
+Has interface: Class: Form4 Interface Name: IKeyboardToolTip is compliant
+Has interface: Class: Form4 Interface Name: IContainerControl is compliant
+Class Name: Form4 Method Name: label1_Click Method Size: 2
+Class Name: Form4 Method Name: method1 Method Size: 19
+Class Name: Form4 Method Name: method2 Method Size: 19
+Class Name: Form4 Method Name: method3 Method Size: 19
+Class Name: Form4 Method Name: method4 Method Size: 19
+Class Name: Form4 Method Name: method5 Method Size: 19
+Class Name: Form4 Method Name: Dispose Method Size: 43
+Class Name: Form4 Method Name: InitializeComponent Method Size: 953
+File Name: TestAssembly, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+File Name: TestAssembly, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Class Name: InterfaceAAA Method Name: get_Color Method Size: 0
+Class Name: InterfaceAAA Method Name: set_Color Method Size: 0
+Class Name: InterfaceAAA Method Name: Open Method Size: 0
+Class Name: InterfaceAAA Method Name: Close Method Size: 0
+Class Name: InterfaceAAA Method Name: Write Method Size: 0
+File Name: TestAssembly, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Class Name: InterfaceBBB Method Name: get_Color Method Size: 0
+Class Name: InterfaceBBB Method Name: set_Color Method Size: 0
+Class Name: InterfaceBBB Method Name: Open Method Size: 0
+Class Name: InterfaceBBB Method Name: Close Method Size: 0
+Class Name: InterfaceBBB Method Name: Write Method Size: 0
+File Name: TestAssembly, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+File Name: TestAssembly, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Has interface: Class: NewClass Interface Name: interface1 is compliant
+Class Name: NewClass Method Name: get_Color Method Size: 7
+Class Name: NewClass Method Name: set_Color Method Size: 8
+Class Name: NewClass Method Name: Close Method Size: 30
+Class Name: NewClass Method Name: Open Method Size: 30
+Class Name: NewClass Method Name: Write Method Size: 29
+File Name: TestAssembly, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+File Name: TestAssembly, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+File Name: TestAssembly, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Has interface: Class: Settings Interface Name: INotifyPropertyChanged is compliant
+Class Name: Class_2 Method Name: 5
+Class Name: ClassIN Method Name: 1
+Class Name: ClassIn2 Method Name: 1
+Class Name: ClassMain Method Name: 0
+Class Name: ClassOut Method Name: 1
+Class Name: ClassOut2 Method Name: 1
+Class Name: Form1 Method Name: 5
+Class Name: Form2 Method Name: 4
+Class Name: Form3 Method Name: 5
+Class Name: Form4 Method Name: 8
+Class Name: interface1 Method Name: 0
+Class Name: InterfaceAAA Method Name: 5
+Class Name: InterfaceBBB Method Name: 5
+Class Name: InterfaceCCC Method Name: 0
+Class Name: NewClass Method Name: 5
+Class Name: Program Method Name: 0
+Class Name: Resources Method Name: 0
+Class Name: Settings Method Name: 0
+
+dll Task3Testing was used to demonstrate the capabilities of the program.
+
+Tree Data Structure:
+AnimalClass
+---CatClass
+---DogClass
+----ChewawaDog
+----CollieClass
+Program
+
+Graph Data Structure:
+Nodes:
+AnimalClass
+CatClass
+ChewawaDog
+CollieClass
+DogClass
+Program
+
+Edges:
+AnimalClass -> CatClass
+AnimalClass -> ChewawaDog
+AnimalClass -> CollieClass
+AnimalClass -> DogClass
+DogClass -> ChewawaDog
+DogClass -> CollieClass
+
+External Refrence: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+File Name: Task3Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+File Name: Task3Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+File Name: Task3Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+File Name: Task3Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+File Name: Task3Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+File Name: Task3Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Class Name: AnimalClass Method Name: 0
+Class Name: CatClass Method Name: 0
+Class Name: ChewawaDog Method Name: 0
+Class Name: CollieClass Method Name: 0
+Class Name: DogClass Method Name: 0
+Class Name: Program Method Name: 0
+
 dll TestingDllv2 was used to demonstrate the capabilities of the program.
 File Name: TestingDllv2, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
 External Reference: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
