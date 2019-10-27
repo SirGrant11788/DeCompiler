@@ -310,7 +310,8 @@ namespace Prog3BTask1
                 
                 richTextBoxTree.Clear();
                 treeAdd(opf.FileName, treeViewClasses);//tree classes, add to treeView
-                SaveTreeViewIntoFile(treeViewClasses);//tree write to file
+                SaveTreeViewIntoFile(treeViewClasses, tree);//tree write to file
+                tree.Nodes.ForEach(p => PrintNode(p, 0));//tree printout
                 //tree read from file
                 using (StreamReader readtext = new StreamReader(@"tree.txt"))
                 {
@@ -613,21 +614,23 @@ namespace Prog3BTask1
         }
 
         // Write the TreeView's values into a file that uses dashes using recursion to show indentation.
-        private static void SaveTreeViewIntoFile(TreeView trv)
+        private static void SaveTreeViewIntoFile(TreeView trv, Tree<string> tree)
         {
             
             // Build a string containing the TreeView's contents.
             StringBuilder sb = new StringBuilder();
             foreach (TreeNode node in trv.Nodes)
             {
-                WriteNodeIntoString(0, node, sb);
+                tree.Begin(node.Text);
+                WriteNodeIntoString(0, node, sb,tree);
+                tree.End();
             }
 
             // Write the result into the file.
             File.WriteAllText(@"tree.txt", sb.ToString());
         }
         // Write this node's subtree into the StringBuilder.
-        private static void WriteNodeIntoString(int level, TreeNode node, StringBuilder sb)
+        private static void WriteNodeIntoString(int level, TreeNode node, StringBuilder sb, Tree<string> tree)
         {
             // Append the correct number of dashes and the node's text.
             sb.AppendLine(new string('-', level) + node.Text);
@@ -635,8 +638,16 @@ namespace Prog3BTask1
             // Recursively add children with one greater level of tabs.
             foreach (TreeNode child in node.Nodes)
             {
-                WriteNodeIntoString(level + 1, child, sb);
+                tree.Add(child.Text);
+                WriteNodeIntoString(level + 1, child, sb, tree);
             }
+        }
+        //print tree node, recursive (can be used to store to txt)
+        static void PrintNode<T>(TreeNode<T> node, int level)
+        {
+                Console.WriteLine("{0}{1}", new string('-', level * 3), node.Value);
+                level++;
+                node.Children.ForEach(p => PrintNode(p, level));   
         }
     }
     /// <summary>
