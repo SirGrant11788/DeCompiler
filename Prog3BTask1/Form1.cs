@@ -509,6 +509,7 @@ namespace Prog3BTask1
         //tree methods 
         public static void treeAdd(string OPF, TreeView treeViewClasses)
         {
+            
             try
             {
                 treeViewClasses.Nodes.Clear();
@@ -611,14 +612,16 @@ namespace Prog3BTask1
             public int level { get; set; }
         }
 
-        // Write the TreeView's values into a file that uses tabs using recursion
-        // to show indentation.
+        // Write the TreeView's values into a file that uses dashes using recursion to show indentation.
         private static void SaveTreeViewIntoFile(TreeView trv)
         {
+            
             // Build a string containing the TreeView's contents.
             StringBuilder sb = new StringBuilder();
             foreach (TreeNode node in trv.Nodes)
+            {
                 WriteNodeIntoString(0, node, sb);
+            }
 
             // Write the result into the file.
             File.WriteAllText(@"tree.txt", sb.ToString());
@@ -626,12 +629,14 @@ namespace Prog3BTask1
         // Write this node's subtree into the StringBuilder.
         private static void WriteNodeIntoString(int level, TreeNode node, StringBuilder sb)
         {
-            // Append the correct number of tabs and the node's text.
-            sb.AppendLine(new string('\t', level) + node.Text);
+            // Append the correct number of dashes and the node's text.
+            sb.AppendLine(new string('-', level) + node.Text);
 
             // Recursively add children with one greater level of tabs.
             foreach (TreeNode child in node.Nodes)
+            {
                 WriteNodeIntoString(level + 1, child, sb);
+            }
         }
     }
     /// <summary>
