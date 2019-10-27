@@ -77,13 +77,9 @@ namespace Prog3BTask1
                     List<String> classList = new List<String>();//storing classes
                     List<String> methodList = new List<String>();//storing methods
                     List<String> InterfaceList = new List<String>();//for tree interface
-                    List<String> NotInterfaceList = new List<String>();//for tree interface
                     List<String> AllReferencedInterfaces = new List<String>();//for tree interface
                     List<String> AllReferencedInterfacesClass = new List<String>();//for tree interface
-                    List<String> NotAllReferencedInterfaces = new List<String>();//for tree interface
-                    List<String> NotAllReferencedInterfacesClass = new List<String>();//for tree interface
                     List<String> ReferencedInterfaces = new List<String>();//for tree interface
-                    List<String> NotReferencedInterfaces = new List<String>();//for tree interface
                     List<String> RefList = new List<String>();//for tree interface
                     HashSet<String> NonRefList = new HashSet<String>();//for tree interface
                     int refClass = 0;//for tree interface
@@ -195,17 +191,12 @@ namespace Prog3BTask1
                         {
                             AllReferencedInterfaces.Add(i.Name);
                             AllReferencedInterfacesClass.Add(classes.Name);
-                            NotAllReferencedInterfaces.Add(i.Name);
-                            NotAllReferencedInterfacesClass.Add(classes.Name);
+
                         }
                         //all interfaces
                         if (classes.IsInterface)
                         {
                             InterfaceList.Add(classes.Name);
-                        }
-                        else
-                        {
-                            NotInterfaceList.Add(classes.Name);
                         }
 
                         for (int i = 0; i < InterfaceList.Count; i++)
@@ -219,18 +210,6 @@ namespace Prog3BTask1
                                 }
                             }
                         }
-                        for (int i = 0; i < NotInterfaceList.Count; i++)
-                        {
-
-                            for (int j = 0; j < NotAllReferencedInterfaces.Count; j++)
-                            {
-                                if (NotInterfaceList[i] == NotAllReferencedInterfaces[j])
-                                {
-                                    NotReferencedInterfaces.Add(NotInterfaceList[i]);
-                                }
-                            }
-                        }
-
                     }
                     //display classes and number of methods
                     int numClasses = classList.Count;
@@ -456,6 +435,7 @@ namespace Prog3BTask1
                 Console.WriteLine("InterfaceUser Method Error \n" + ex);
             }
         }
+
         private void btnFile_Click(object sender, EventArgs e)
         {
             try
@@ -467,6 +447,7 @@ namespace Prog3BTask1
                 MessageBox.Show("NOT A SUPPORTED FILE \n btnFile_Click \n" + ex.ToString());
             }
         }
+
         private void btnLinesUser_Click(object sender, EventArgs e)
         {
             try
@@ -478,6 +459,7 @@ namespace Prog3BTask1
                 MessageBox.Show("SELECT ASSEMBLY FILE \n" + ex);
             }
         }
+
         private void btnInterfaces_Click(object sender, EventArgs e)
         {
             try
@@ -489,14 +471,17 @@ namespace Prog3BTask1
                 MessageBox.Show("Interfaces btn Error \n" + ex);
             }
         }
+
         private void BtnSearchTree_Click(object sender, EventArgs e)
         {
             userSearchTree();
         }
+
         private void btnSearchGraph_Click(object sender, EventArgs e)
         {
             GraphUser();
         }
+
         private void txtbGraph_KeyPress(object sender, KeyPressEventArgs e)//allow only numbers in the graph text box search
         {
             //allows backspace key
@@ -514,7 +499,6 @@ namespace Prog3BTask1
             try
             {
                 treeViewClasses.Nodes.Clear();
-                //var tree = new Tree<string>();//
                 List<infoClass> classList = new List<infoClass>();
                 Type[] Types = Assembly.LoadFile(OPF).GetTypes();
                 foreach (Type classes in Types)
@@ -635,14 +619,14 @@ namespace Prog3BTask1
             // Append the correct number of dashes and the node's text.
             sb.AppendLine(new string('-', level) + node.Text);
 
-            // Recursively add children with one greater level of tabs.
+            // Recursively add children with one greater level of dashes.
             foreach (TreeNode child in node.Nodes)
             {
                 tree.Add(child.Text);
                 WriteNodeIntoString(level + 1, child, sb, tree);
             }
         }
-        //print tree node, recursive (can be used to store to txt)
+        //print tree node, recursive (can be used to store to txt) - not used due to restriction on sub classes
         static void PrintNode<T>(TreeNode<T> node, int level)
         {
                 Console.WriteLine("{0}{1}", new string('-', level * 3), node.Value);
@@ -650,10 +634,7 @@ namespace Prog3BTask1
                 node.Children.ForEach(p => PrintNode(p, level));   
         }
     }
-    /// <summary>
-    /// TODO
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
+
     public class Tree<T>
     {
         private Stack<TreeNode<T>> m_Stack = new Stack<TreeNode<T>>();
@@ -684,6 +665,7 @@ namespace Prog3BTask1
             return this;
         }
     }
+
     public class TreeNode<T>
     {
         public T Value { get; }
@@ -701,7 +683,6 @@ namespace Prog3BTask1
             Children.Add(node);
             return node;
         }
-
 
     }
 
