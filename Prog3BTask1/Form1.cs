@@ -12,22 +12,23 @@ using System.Text;
 //Grant Verheul 12001640
 //Task 1
 //Dynamically loads a .NET assembly
-//Displays an aplphabetical list of all the external references that the assembly specifies.
+//Displays an alphabetical list of all the external references that the assembly specifies.
 //Displays a list of all the classes in the assembly, ordered by number of methods in the class
-//Displays a list of all the classes in the assembly, ordred by average number of lines per method - changed to byte size
+//Displays a list of all the classes in the assembly, ordered by average number of lines per method - changed to byte size
 //Visually distinguishes all the classes that have an average number of lines per method higher than a user configurable number as non-compliant to company standards
 //Task 2
-//Display all the interfaces in the assemby in aplabetical order.
+//Display all the interfaces in the assembly in alphabetical order.
 //Visually distinguishes any interfaces with no implementations as non-compliant to company standards.
 //Visually distinguishes any interfaces with names that do not match a user configurable regular expression as non-compliant to company standards.
 //Display all the classes that implement a user selected interface.
 //Task 3
-//Uses a tree data structure to represent the inheritance hierachy of each of the classes in the assembly.
+//Uses a tree data structure to represent the inheritance hierarchy of each of the classes in the assembly.
 //Display the inheritance hierarchy of any selected class to the user.
-//Uses recursion to export a text file that shows the classes and hierachy of each one.
+//Uses recursion to export a text file that shows the classes and hierarchy of each one.
 //Uses a graph data structure to represent the association and composition relationships between classes.
 //Displays the relationships of any selected class to the user.
 //Visually distinguishes any class with more than a user configurable number of relationships as non-complaint with company standards.
+
 namespace Prog3BTask1
 {
     public partial class Form1 : Form
