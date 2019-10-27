@@ -504,79 +504,78 @@ namespace Prog3BTask1
                 Type[] Types = Assembly.LoadFile(OPF).GetTypes();
                 foreach (Type classes in Types)
                 {
-                    //Gets the number of levels of the class
+                    //levels of the class
                     Type type = classes;
-                    int iCount = 0;
+                    int count = 0;
                     while (type != null)
                     {
                         type = type.BaseType;
-                        ++iCount;
+                        ++count;
                     }
                     //add each Class to list
                     infoClass obj = new infoClass(classes.Name.ToString());
-                    obj.level = iCount;
+                    obj.level = count;
 
                     if (obj.level > 1)
                     {
                         Type typee = classes;
-                        obj.parentName = typee.BaseType.Name.ToString();
+                        obj.mainNode = typee.BaseType.Name.ToString();
                     }
                     if (obj.level == 4)
                     {
                         Type typee = classes;
-                        obj.grandparentName = typee.BaseType.BaseType.Name.ToString();
+                        obj.subNode = typee.BaseType.BaseType.Name.ToString();
                     }
                     classList.Add(obj);
                 }
-                //1st level
-                foreach (infoClass cls in classList)
+                //first sub
+                foreach (infoClass classTree in classList)
                 {
-                    if (cls.level == 2)
+                    if (classTree.level == 2)
                     {
-                        treeViewClasses.Nodes.Add(cls.name);
+                        treeViewClasses.Nodes.Add(classTree.name);
 
                     }
                 }
-                foreach (infoClass cls in classList)
+                foreach (infoClass classTree1 in classList)
                 {
-                    if (cls.level == 3)
+                    if (classTree1.level == 3)
                     {
-                        int parentNum = 0;
+                        int nodeNum = 0;
                         foreach (TreeNode node in treeViewClasses.Nodes)
                         {
-                            if (node.Text.ToString() == cls.parentName)
+                            if (node.Text.ToString() == classTree1.mainNode)
                             {
-                                parentNum = node.Index;
+                                nodeNum = node.Index;
                             }
                         }
-                        treeViewClasses.Nodes[parentNum].Nodes.Add(cls.name);
+                        treeViewClasses.Nodes[nodeNum].Nodes.Add(classTree1.name);
                     }
                 }
-                foreach (infoClass cls in classList)
+                foreach (infoClass classTree2 in classList)
                 {
-                    if (cls.level == 4)
+                    if (classTree2.level == 4)
                     {
-                        int parentNum = 0;
-                        int grandparentNum = 0;
+                        int nodeNum = 0;
+                        int subNodeName = 0;
                         foreach (TreeNode node in treeViewClasses.Nodes)
                         {
-                            if (node.Text.ToString() == cls.grandparentName)
+                            if (node.Text.ToString() == classTree2.subNode)
                             {
-                                grandparentNum = node.Index;
+                                subNodeName = node.Index;
                             }
                         }
 
-                        foreach (TreeNode node in treeViewClasses.Nodes[grandparentNum].Nodes)
+                        foreach (TreeNode node in treeViewClasses.Nodes[subNodeName].Nodes)
                         {
-                            if (node.Text.ToString() == cls.parentName)
+                            if (node.Text.ToString() == classTree2.mainNode)
                             {
-                                parentNum = node.Index;
+                                nodeNum = node.Index;
                             }
                         }
-                        treeViewClasses.Nodes[grandparentNum].Nodes[parentNum].Nodes.Add(cls.name);
+                        treeViewClasses.Nodes[subNodeName].Nodes[nodeNum].Nodes.Add(classTree2.name);
                     }
                 }
-                //SaveTreeViewIntoFile(treeViewClasses);
             }
             catch (Exception ex)
             {
@@ -592,8 +591,8 @@ namespace Prog3BTask1
             }
 
             public string name { get; set; }
-            public string parentName { get; set; }
-            public string grandparentName { get; set; }
+            public string mainNode { get; set; }
+            public string subNode { get; set; }
 
             public int level { get; set; }
         }

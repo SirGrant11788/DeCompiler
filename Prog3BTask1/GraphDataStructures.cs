@@ -77,6 +77,7 @@ namespace Prog3BTask1
                 writetext.WriteLine("Direct Graph Data Structure " + DateTime.Now);
                 writetext.Close();
             }
+
             graph.Nodes.textFile();
             graph.Edges.textFile();
 
